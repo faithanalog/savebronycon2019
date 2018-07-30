@@ -3,13 +3,13 @@ var vm = new Vue({
     data: {
         ponies_saving_bronycon: "Many",
         did_save_bronycon: false
-    }
+    },
     methods: {
         saveBronyCon: function() {
             $.post("/api/save_bronycon");
-            this.did_save_bronycon: = true;
+            this.did_save_bronycon = true;
             var x = parseInt(this.ponies_saving_bronycon);
-            if (x && x != NaN) {
+            if (x && !isNaN(x)) {
                 x++;
                 this.ponies_saving_bronycon = x.toString();
             }

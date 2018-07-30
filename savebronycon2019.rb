@@ -17,7 +17,7 @@ end
 get '/api/how_many_saving_bronycon' do
   n = redis.get(PONIES_SAVING_BRONYCON).to_i
   JSON.generate({
-    "ponies_saving_bronycon" => n
+    PONIES_SAVING_BRONYCON => n
   })
 end
 

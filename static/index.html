@@ -12,12 +12,10 @@
     </head>
     <body>
         <div id="app">
-            <center>
-                <div style="background-color: white">
+            <div class="card" style="max-width: 650px">
                 <h1 class="display-4">
                     {{ ponies_saving_bronycon }} ponies are saving BronyCon in 2019!
                 </h1>
-                </div>
                 <br>
                 <br>
                 <div v-if="did_save_bronycon">
@@ -26,7 +24,7 @@
                 <div v-else>
                     <input type="button" v-on:click="saveBronyCon()" value="Save BronyCon!" class="btn btn-lg btn-primary">
                 </div>
-            </center>
+            </div>
         </div>
         <script src="index.js"></script>
     </body>

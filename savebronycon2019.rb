@@ -16,9 +16,7 @@ end
 
 get '/api/how_many_saving_bronycon' do
   n = redis.get(PONIES_SAVING_BRONYCON).to_i
-  JSON.generate({
-    PONIES_SAVING_BRONYCON => n
-  })
+  JSON.generate(PONIES_SAVING_BRONYCON => n)
 end
 
 post '/api/save_bronycon' do

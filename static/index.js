@@ -9,7 +9,7 @@ var vm = new Vue({
             $.post("/api/save_bronycon");
             this.did_save_bronycon = true;
             var x = parseInt(this.ponies_saving_bronycon);
-            if (x && !isNaN(x)) {
+            if (x !== null && x !== undefined && !isNaN(x)) {
                 x++;
                 this.ponies_saving_bronycon = x.toString();
             }

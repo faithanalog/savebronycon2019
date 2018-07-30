@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+        <style type="text/css">body{margin:40px auto;max-width:650px;line-height:1.6;font-size:18px;color:#444;padding:0 10px}h1,h2,h3{line-height:1.2}</style>
+    </head>
+    <body>
+        <div id="app">
+            <div>
+                {{ ponies_saving_bronycon }} ponies are saving BronyCon in 2019!
+            </div>
+            <br>
+            <br>
+            <div v-if="did_save_bronycon">
+                You're saving BronyCon too!   
+            </div>
+            <div v-else>
+                <input type="button" v-on:click="saveBronyCon()" value="Save BronyCon!">
+            </div>
+        </div>
+
+        <script>
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    ponies_saving_bronycon: "Many",
+                    did_save_bronycon: false
+                }
+                methods: {
+                    saveBronyCon: function() {
+                        $.post("/api/save_bronycon");
+                        this.did_save_bronycon: = true;
+                        var x = parseInt(this.ponies_saving_bronycon);
+                        if (x && x != NaN) {
+                            x++;
+                            this.ponies_saving_bronycon = x.toString();
+                        }
+                    }
+                }
+            });
+            
+            $.getJSON("/api/how_many_saving_bronycon", function(response) {
+                vm.ponies_saving_bronycon = response.ponies_saving_bronycon.toString();
+            });
+        </script>
+    </body>
+</html>

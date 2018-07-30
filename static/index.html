@@ -11,19 +11,23 @@
         </style>
     </head>
     <body>
-        <div id="app" class="text-center">
-            <div class="card" style="max-width: 650px">
-                <h1 class="display-4">
-                    {{ ponies_saving_bronycon }} ponies are saving BronyCon in 2019!
-                </h1>
-                <br>
-                <br>
-                <div v-if="did_save_bronycon">
-                    You're saving BronyCon too!   
+        <div id="app" class="container">
+            <div class="row">
+                <div class="col-lg"></div>
+                <div class="card col-sm col-lg">
+                    <h1 class="display-4">
+                        {{ ponies_saving_bronycon }} ponies are saving BronyCon in 2019!
+                    </h1>
+                    <br>
+                    <br>
+                    <div v-if="did_save_bronycon">
+                        You're saving BronyCon too!   
+                    </div>
+                    <div v-else>
+                        <input type="button" v-on:click="saveBronyCon()" value="Save BronyCon!" class="btn btn-lg btn-primary">
+                    </div>
                 </div>
-                <div v-else>
-                    <input type="button" v-on:click="saveBronyCon()" value="Save BronyCon!" class="btn btn-lg btn-primary">
-                </div>
+                <div class="col-lg"></div>
             </div>
         </div>
         <script src="index.js"></script>
